@@ -16,7 +16,7 @@ public interface IncidenciaRepository extends JpaRepository<Incidencia, Long> {
 
     public List<Incidencia> findAllByEstado(String cadena);
 
-    public List<Incidencia> findAllByTecnicoNombreContanining(String cadena);
+    public List<Incidencia> findAllByTecnicoNombreContaining(String cadena);
 
     public List<Incidencia> findAllByTecnicoContactoEmail(String cadena);
 }

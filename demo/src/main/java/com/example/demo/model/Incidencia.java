@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Incidencia {
 
     @Id
@@ -35,7 +37,7 @@ public class Incidencia {
     private Tecnico tecnico;
 
 
-    //En el caso de oneToOne si no se pone nada la carga "fetch" es EAGER
+    //En el caso de oneToOne s la carga "fetch" es EAGER
     @OneToOne 
     private FacturaIncidencia facturaIncidencia;
 
