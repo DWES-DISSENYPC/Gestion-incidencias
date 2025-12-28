@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>PROCESAR INCIDENCIA</h1>
+    <form th:action="@{/incidencias/editar/{id}(id=${i.incidencia})}" method="post" th:objet="${i}">
+
+        <input type="hidden" th:field="*{idincidencia}">
+        <label >Selecciona un técncio</label>
+        <select th:field="*{idTecnico}">
+
+            <option value="" selected disabled>Selecciona una opcion</option>
+            <option 
+                th:each="t : ${tecnico}"
+                th:value="${t.id}"
+                th:text="${t.nombre}"
+            ></option>
+
+        </select><br>
+        <button type="submit">Enviar </button>
+
+    </form>
+    <br>
+    <a th:href="@{/incidencas}">Volver</a>
+
+</body>
+</html>

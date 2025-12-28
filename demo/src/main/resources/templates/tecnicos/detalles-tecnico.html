@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 th:text="|DETALLES DE ${t.nombre}|"></h1>
+    <div>
+        <span th:text="|ID de ${t.nombre}: ${t.id}"></span><br>
+        <span>Contacto</span><br>
+        <ul>
+            <li><span th:text="|Teléfono: ${t.contacto.telefono}|"></span><br></li>
+            <li><span th:text="|Email: ${t.contacto.email}|"></span><br></li>
+        </ul>
+        <span th:text="|Años de experiencia: ${t.experiencia|}"></span><br>
+        <span th:text="|Tipo: ${t.tipo} - ${t.tipo}|"></span><br>
+
+    </div>
+    <br>
+    <div>
+        <a th:href="@{/tecnicos/editar/{id}(id={t.id})}">Editar</a>
+        <a th:href="@/tecnicos">Volver</a>
+    </div>
+
+</body>
+</html>

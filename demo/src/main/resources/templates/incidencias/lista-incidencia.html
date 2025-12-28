@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>LISTA DE INCIDENCIAS</h1>
+    <div>
+
+        <span>Añadir Filto:</span>
+        <form th:action="@{incidencias}" method="get">
+
+            <label >Selecciona un Filtro</label>
+            <select name="filtro">
+                <option th:each="f : ${filtors}"
+                th:value="${f}"
+                th:text:="${f}"
+                ></option>
+            </select>
+            <label for="cadena">Texto del filtro</label>
+            <input type="text" name="cadena">
+
+            <button type="submit">filtrar</button>
+
+        </form>
+
+    </div>
+
+    <ul>
+        <li th:each="i : ${llista}">
+
+            <a th:text="|${i.titulo}| (${i.fechaIncidencia}): ${i.estado}|" th:href="@{/incidencias/{id}(id=${i.id})}"></a>
+
+        </li>
+
+    </ul>
+
+    <br>
+    <div>
+
+        <a th:href="@{/incidencias/nueva}">Nueva incidenca</a>
+
+    </div>
+
+</body>
+</html>

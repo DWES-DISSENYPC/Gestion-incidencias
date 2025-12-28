@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.TecnicoDTO;
 import com.example.demo.model.Tecnico;
+import com.example.demo.model.TecnicoExterno;
+import com.example.demo.model.TecnicoInterno;
 import com.example.demo.repository.TecnicoRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class TecnicoService {
@@ -21,6 +25,7 @@ public class TecnicoService {
 
     }
 
+    @Transactional
     public List<TecnicoDTO> listarTecnicos() {
 
         List<Tecnico> lista = tecnicoRepository.findAll();
@@ -35,7 +40,44 @@ public class TecnicoService {
         return listaDto;
     }
 
-   public TecnicoDTO entityToDto(Tecnico tecnico){
+    @Transactional
+    public Optional<TecnicoDTO>  mostrarTecnicoPorId(Long id) {
+
+        Optional<Tecnico> tecnicoOpt = tecnicoRepository.findById(id);
+
+        if (tecnicoOpt.isEmpty()) return Optional.empty();
+        return Optional.of(entityToDto(tecnicoOpt.get()));
+
+    }
+
+    @Transactional
+    public void guardar(TecnicoDTO dto){
+
+        tecnicoRepository.save(dtoToEntity(dto));
+
+    }
+
+    @Transactional
+    public void eliminar(Long id) {
+
+        tecnicoRepository.deleteById(id);
+
+    }
+    
+    private Tecnico dtoToEntity(TecnicoDTO dto) {
+        
+        Tecnico tecnico;
+        if(dto.getTipo().equals("INTERNO")) tecnico = new TecnicoInterno();
+        else tecnico = new TecnicoExterno();
+        tecnico.setContacto(dto.getContacto());
+        tecnico.setEntorno(dto.getEntorno());
+        tecnico.setExperiencia(dto.getExperiencia());
+        tecnico.setNombre(dto.getNombre());
+        return tecnico;
+
+    }
+
+    public TecnicoDTO entityToDto(Tecnico tecnico){
         return new TecnicoDTO
         (
             tecnico.getId(),
@@ -47,6 +89,8 @@ public class TecnicoService {
         );
 
     }
+
+   
 
 
 }

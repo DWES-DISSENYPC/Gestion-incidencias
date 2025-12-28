@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>DETALLES DE LA INCIDENCIA</h1>
+    <div>
+
+        <span th:text="|Título: ${i.titulo}|"></span><br>
+        <span th:text="|Descripcion: ${i.descripcion}|"></span><br>
+        <span th:text="|Fecha de la incidencia:${i.fechaIncidencia}|"></span><br>
+        <span th:text="|Estado: ${i.estado}|"></span><br>
+
+        <span th:if="${i.estado == ABIERTO}">
+            <br>
+            <a th:href="@{/incidencias/resolver/{id}(id=${i.id})}">Procesar</a>
+        </span>
+        <span th:if="${i.estaod == EN_PROCESO}">
+            <br>
+            <a th:href="@{/incidencas/resolver/{id}(id=${i.id})}">Resolver</a>
+        </span>
+
+        <span th:if="${i.estao == RESUELTO}">
+            <span>Detalles de la factura:</span><br>
+            <span th:text="|Fecha de emision de la factura: ${i.fechaIncidencia}|"></span><br>
+            <span th:text="|Imprte: ${i.Imprte|}"></span><br>
+        </span>
+
+        <a th:href="@{incidencas}">Volver</a>
+    </div>
+
+</body>
+</html>

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class TecnicoDTO {
+public class TecnicoDTO {
 
     // como es un dto no es entidad, ni usa anotaciones de base de datos
     // Tampo es abstract ni hereda ni....

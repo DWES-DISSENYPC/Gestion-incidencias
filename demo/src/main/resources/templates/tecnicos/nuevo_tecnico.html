@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>NUEVO TECNICO</h1>
+    <form action="@{tecnicos/nuevo}" method="Post" th:object="${t}">
+
+        <label >Nombre</label>
+        <input type="text" th:field="*{nombre}" placeholder="Nombre">
+
+        <label >Email</label>
+        <input type="text" th:field="*{contacto.emmail}" placeholder="Email">
+
+        <label >Teléfono</label>
+        <input type="text" th:field="*{contacto.telefono}" placeholder="Telefono">
+
+        <label >Experiencia</label>
+        <input type="text" th:field="+éxperiencia" placeholder="Experiencia">
+
+        <label >Empresa/Departamento</label>
+        <input type="text" th:field="*{entorno}" placeholder="Empresa/Departamento">
+
+        <label >Interno o Externo</label>
+        <select name="tipo" th:field="*{tipo}">
+            <option value="" disabled selected Seleccione una opcion:></option>
+            <option value="INTERNO">INTERNO</option>
+            <option value="EXTERNO">EXTERNO</option>     
+        </select>
+
+        <button type="submit">Enviar</button>
+
+    </form>
+    <br>
+    <div>
+
+        <a th:href="@{/tecnicos}">Volver</a>
+
+    </div>
+
+</body>
+</html>

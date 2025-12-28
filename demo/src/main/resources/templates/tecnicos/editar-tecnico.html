@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>EDITAR TÉCNICO</h1>
+    <form th:action="@{/tecnicos/editar/{id}(id=${t.id})}" method="post" th:object="${t}">
+
+        <label >Editar nombre</label>
+        <input type="text" th:field="*{nombre}" placeholder="Nombre del tecnico">
+        <label >Editar email</label>
+        <input type="text" th:field="*{contacto.email}" placeholder="Emial del tecnico">
+        <label >Editar teléfono</label>
+        <input type="text" th:field="*{contacto.telefono}" placeholder="Telefono del tecnico">
+        <label >Experiencia</label>
+        <input type="text" th:field="*{experiencia}" placeholder="Experiencia del tecnico">
+        <label >Editar empresa/departamento</label>
+        <input type="text" th:field="*{entorno}" placeholder="Empresa/Departamento del tecnico">
+
+        <label >Interno o Externo</label>
+        <select name="tipo">
+
+            <option value="" disabled selected>Seleccione una opcion</option>
+            <option value="INTERNO">INTERNO</option>
+            <option value="EXTERNO">EXTERNO</option>
+
+        </select>
+
+        <BUtton type="submit">Enviar</BUtton>
+
+    </form>
+    <br>
+    <div>
+
+        <a th:href="@{/tecnicos}">Volver</a>
+
+    </div>
+
+</body>
+</html>
